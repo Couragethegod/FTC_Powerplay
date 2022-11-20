@@ -23,13 +23,15 @@ public class Hardware {
 
     //Variables
     HardwareMap hardwareMap = null;
+    double drive;
+    double turn;
+    double strafe;
+    int arm_position;
+    int claw_pos;
 
     // Define a constructor that allows the OpMode to pass a reference to itself.
     public Hardware(LinearOpMode opmode) {myOpMode = opmode;}
 
-     public Hardware(HardwareMap hwMap) {
-        //init(hwMap);
-    }
     /**
      * Initialize all the robot's hardware.
      * This method must be called ONCE when the OpMode is initialized.
@@ -82,5 +84,20 @@ public class Hardware {
         backR.setPower(0);
         frontL.setPower(0);
         frontR.setPower(0);
+        arm.setPower(0);
+    }
+    public void movement(){
+        backL.setPower(drive + strafe + turn);
+        backR.setPower(drive + strafe - turn);
+        frontL.setPower(drive - strafe - turn);
+        frontR.setPower(drive - strafe + turn);
+    }
+    public void arm_position(){
+        arm.setTargetPosition(arm_position);
+        arm.setPower(.5);
+        arm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+    }
+    public void claw_pos(){
+        claw.setPosition(claw_pos);
     }
 }

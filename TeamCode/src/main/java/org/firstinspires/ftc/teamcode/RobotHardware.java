@@ -59,7 +59,7 @@ public class RobotHardware {
     private LinearOpMode myOpMode = null;   // gain access to methods in the calling OpMode.
 
     // Define Motor and Servo objects  (Make them private so they can't be accessed externally)
-    private DcMotor leftDrive   = null;
+    public DcMotor leftDrive   = null;
     private DcMotor rightDrive  = null;
     private DcMotor armMotor = null;
     private Servo   leftHand = null;
@@ -72,8 +72,7 @@ public class RobotHardware {
     public static final double ARM_DOWN_POWER  = -0.45 ;
 
     // Define a constructor that allows the OpMode to pass a reference to itself.
-    public RobotHardware(LinearOpMode opmode) {
-        myOpMode = opmode;
+    public RobotHardware(){
     }
 
     /**
@@ -151,6 +150,7 @@ public class RobotHardware {
      * @param power driving power (-1.0 to 1.0)
      */
     public void setArmPower(double power) {
+
         armMotor.setPower(power);
     }
 

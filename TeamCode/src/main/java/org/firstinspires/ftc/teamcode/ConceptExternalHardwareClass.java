@@ -32,6 +32,7 @@ package org.firstinspires.ftc.teamcode;
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.util.Range;
 
 import org.firstinspires.ftc.robotcontroller.external.samples.RobotHardware;
@@ -69,6 +70,7 @@ import org.firstinspires.ftc.robotcontroller.external.samples.RobotHardware;
 @TeleOp(name="Concept: Robot Hardware Class", group="Robot")
 @Disabled
 public class ConceptExternalHardwareClass extends LinearOpMode {
+    //Hardware robot = new Hardware();
 
     // Create a RobotHardware object to be used to access robot hardware.
     // Prefix any hardware functions with "robot." to access this class.
@@ -83,6 +85,7 @@ public class ConceptExternalHardwareClass extends LinearOpMode {
 
         // initialize all the hardware, using the hardware class. See how clean and simple this is?
         robot.init();
+
 
         // Send telemetry message to signify robot waiting;
         // Wait for the game to start (driver presses PLAY)
@@ -123,7 +126,6 @@ public class ConceptExternalHardwareClass extends LinearOpMode {
                 arm = 0;
 
             robot.setArmPower(arm);
-
 
             // Send telemetry messages to explain controls and show robot status
             telemetry.addData("Drive", "Left Stick");

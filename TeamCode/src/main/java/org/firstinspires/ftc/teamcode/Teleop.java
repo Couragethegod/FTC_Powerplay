@@ -6,7 +6,7 @@ import com.qualcomm.robotcore.util.Range;
 
 import org.firstinspires.ftc.robotcontroller.external.samples.RobotHardware;
 
-@TeleOp(name="Concept: Robot Hardware Class", group="Robot")
+@TeleOp(name="Concept: Hardware Class", group="Robot")
 public class Teleop extends LinearOpMode {
     // Create a RobotHardware object to be used to access robot hardware.
     // Prefix any hardware functions with "robot." to access this class.
@@ -14,7 +14,6 @@ public class Teleop extends LinearOpMode {
 
     @Override
     public void runOpMode() {
-        double drive        = 0;
         double turn         = 0;
         double arm          = 0;
         double handOffset   = 0;
@@ -27,6 +26,43 @@ public class Teleop extends LinearOpMode {
 
         // run until the end of the match (driver presses STOP)
         while (opModeIsActive()) {
+            robot.movement();
+            robot.arm_position();
+            robot.claw_pos();
+            move();
+            move_arm();
+            move_claw();
         }
+    }
+    public void move_arm(){
+        if (gamepad1.dpad_up){
+            robot.arm_position = 800;
+        } else if (gamepad1.dpad_left){
+            robot.arm_position = 600;
+        } else if (gamepad1.dpad_down){
+            robot.arm_position = 400;
+        } else if (gamepad1.dpad_right){
+            robot.arm_position = 200;
+        } else if ((gamepad1.left_bumper) && gamepad1.dpad_up){
+            robot.arm_position = 100;
+        } else if ((gamepad1.left_bumper) && gamepad1.dpad_left){
+            robot.arm_position = 80;
+        } else if ((gamepad1.left_bumper) && gamepad1.dpad_down){
+            robot.arm_position = 60;
+        } else if ((gamepad1.left_bumper) && gamepad1.dpad_right){
+            robot.arm_position = 20;
+        }
+    }
+    public void move_claw(){
+        if (gamepad1.a){
+            robot.claw_pos = 0;
+        } else if (gamepad1.b){
+            robot.claw_pos = 180;
+        }
+    }
+    public void move(){
+        robot.drive = gamepad1.left_stick_y;
+        robot.strafe = gamepad1.left_stick_x;
+        robot.turn = gamepad1.right_stick_x;
     }
 }
