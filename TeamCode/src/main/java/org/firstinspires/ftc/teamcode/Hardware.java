@@ -86,7 +86,6 @@ public class Hardware {
         frontR.setPower(0);
         arm.setPower(0);
     }
-
     public void movement(){
         backL.setPower(drive + strafe + turn);
         backR.setPower(drive + strafe - turn);
