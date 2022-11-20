@@ -23,6 +23,7 @@ package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
 import org.openftc.apriltag.AprilTagDetection;
@@ -36,11 +37,15 @@ import java.util.ArrayList;
 @TeleOp
 public class AprilTagAutonomousInitDetectionExample extends LinearOpMode
 {
+
+    private LinearOpMode myOpMode = null;   // gain access to methods in the calling OpMode.
+    // Define a constructor that allows the OpMode to pass a reference to itself.
+    public AprilTagAutonomousInitDetectionExample(LinearOpMode opmode) {myOpMode = opmode;}
     OpenCvCamera camera;
     AprilTagDetectionPipeline aprilTagDetectionPipeline;
 
     static final double FEET_PER_METER = 3.28084;
-
+    HardwareMap hardwareMap = null;
     // Lens intrinsics
     // UNITS ARE PIXELS
     // NOTE: this calibration is for the C920 webcam at 800x448.
