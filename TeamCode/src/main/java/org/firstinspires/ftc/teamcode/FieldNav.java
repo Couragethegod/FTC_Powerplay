@@ -290,6 +290,5 @@ public class FieldNav extends LinearOpMode {
         } else if (targetIndex == 3) {
             int image = 3;
         }
-
     }
 }
