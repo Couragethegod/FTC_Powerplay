@@ -27,28 +27,28 @@ public class Auton extends LinearOpMode {
 
         // run until the end of the match (driver presses STOP)
         if (fieldnav.image == 0 || apriltag.tagOfInterest.id == apriltag.LEFT){
-
+        hardware.arm_position = 800;
         } else if (fieldnav.image == 0 || apriltag.tagOfInterest.id == apriltag.MIDDLE){
-
+            hardware.arm_position = 600;
         } else if (fieldnav.image == 0 || apriltag.tagOfInterest.id == apriltag.RIGHT){
-
+            hardware.arm_position = 400;
         }
         if (fieldnav.image == 1 || apriltag.tagOfInterest.id == apriltag.LEFT){
-
+            hardware.arm_position = 1000;
         } else if (fieldnav.image == 1 || apriltag.tagOfInterest.id == apriltag.MIDDLE){
-
+            hardware.arm_position = 1200;
         } else if (fieldnav.image == 1 || apriltag.tagOfInterest.id == apriltag.RIGHT){
-
+            hardware.arm_position = 1400;
         }
         if (fieldnav.image == 2 || apriltag.tagOfInterest.id == apriltag.LEFT){
-
+            hardware.arm_position = 200;
         } else if (fieldnav.image == 2 || apriltag.tagOfInterest.id == apriltag.MIDDLE){
-
+            hardware.arm_position = 100;
         } else if (fieldnav.image == 2 || apriltag.tagOfInterest.id == apriltag.RIGHT){
-
+            hardware.arm_position = 50;
         }
         if (fieldnav.image == 3 || apriltag.tagOfInterest.id == apriltag.LEFT){
-
+            hardware.arm_position = 0;
         } else if (fieldnav.image == 3 || apriltag.tagOfInterest.id == apriltag.MIDDLE){
 
         } else if (fieldnav.image == 3 || apriltag.tagOfInterest.id == apriltag.RIGHT){
