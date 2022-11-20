@@ -86,6 +86,7 @@ public class Hardware {
         frontR.setPower(0);
         arm.setPower(0);
     }
+
     public void movement(){
         backL.setPower(drive + strafe + turn);
         backR.setPower(drive + strafe - turn);
@@ -99,5 +100,11 @@ public class Hardware {
     }
     public void claw_pos(){
         claw.setPosition(claw_pos);
+    }
+    public void stop(){
+        backL.setPower(0);
+        backR.setPower(0);
+        frontL.setPower(0);
+        frontR.setPower(0);
     }
 }
