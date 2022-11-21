@@ -11,7 +11,7 @@ public class Teleop extends LinearOpMode {
     // Create a hardwareHardware object to be used to access hardware hardware.
     // Prefix any hardware functions with "hardware." to access this class.
     org.firstinspires.ftc.teamcode.Hardware hardware = new org.firstinspires.ftc.teamcode.Hardware(this);
-
+//
     @Override
     public void runOpMode() {
         double turn         = 0;
