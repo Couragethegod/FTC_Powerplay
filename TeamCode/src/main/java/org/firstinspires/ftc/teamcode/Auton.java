@@ -26,6 +26,7 @@ public class Auton extends LinearOpMode {
         waitForStart();
 
         // run until the end of the match (driver presses STOP)
+        /* April Tag and Vuforia
         if (fieldnav.image == 0 || apriltag.tagOfInterest.id == apriltag.LEFT){
         hardware.arm_position = 800;
         } else if (fieldnav.image == 0 || apriltag.tagOfInterest.id == apriltag.MIDDLE){
@@ -52,6 +53,14 @@ public class Auton extends LinearOpMode {
         } else if (fieldnav.image == 3 || apriltag.tagOfInterest.id == apriltag.MIDDLE){
 
         } else if (fieldnav.image == 3 || apriltag.tagOfInterest.id == apriltag.RIGHT){
+
+        } */
+        // April Tag
+        if (apriltag.tagOfInterest.id == apriltag.LEFT) {
+
+        } else if (apriltag.tagOfInterest.id == apriltag.MIDDLE) {
+
+        } else if (apriltag.tagOfInterest.id == apriltag.RIGHT) {
 
         }
     }
