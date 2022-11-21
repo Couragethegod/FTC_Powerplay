@@ -50,11 +50,40 @@ public class BlueL extends LinearOpMode {
         } */
         // April Tag
         if (apriltag.tagOfInterest.id == apriltag.LEFT) {
-
+        left();
         } else if (apriltag.tagOfInterest.id == apriltag.MIDDLE) {
-
+        middle();
         } else if (apriltag.tagOfInterest.id == apriltag.RIGHT) {
-
+        right();
         }
     }
+
+
+
+
+    public void left(){
+        hardware.BLpower = .5;
+        hardware.BRpower = .5;
+        hardware.FLpower = .5;
+        hardware.FRpower = .5;
+        sleep(1000);
+        hardware.stop();
+    }
+    public void middle(){
+        hardware.BLpower = .5;
+        hardware.BRpower = .5;
+        hardware.FLpower = .5;
+        hardware.FRpower = .5;
+        sleep(1000);
+        hardware.stop();
+    }
+    public void right(){
+        hardware.BLpower = .5;
+        hardware.BRpower = .5;
+        hardware.FLpower = .5;
+        hardware.FRpower = .5;
+        sleep(1000);
+        hardware.stop();
+    }
+
 }

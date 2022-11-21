@@ -26,7 +26,12 @@ public class Hardware {
     double drive;
     double turn;
     double strafe;
-    double power = .5;
+
+    double BLpower;
+    double BRpower;
+    double FLpower;
+    double FRpower;
+
     int arm_position;
     int claw_pos;
 
@@ -106,5 +111,17 @@ public class Hardware {
     public void claw_pos() {
         claw.setPosition(claw_pos);
         //
+    }
+    public void autonmovement(){
+        backL.setPower(BLpower);
+        backR.setPower(BRpower);
+        frontL.setPower(FLpower);
+        frontR.setPower(FRpower);
+    }
+    public void stop(){
+        backL.setPower(0);
+        backR.setPower(0);
+        frontL.setPower(0);
+        frontR.setPower(0);
     }
 }
