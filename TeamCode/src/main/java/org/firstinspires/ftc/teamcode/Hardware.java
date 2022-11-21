@@ -87,10 +87,10 @@ public class Hardware {
         arm.setPower(0);
     }
     public void movement(){
-        backL.setPower(drive + strafe + turn);
-        backR.setPower(drive + strafe - turn);
-        frontL.setPower(drive - strafe - turn);
-        frontR.setPower(drive - strafe + turn);
+        backL.setPower(drive + (strafe + turn));
+        backR.setPower((drive - strafe) + turn);
+        frontL.setPower((drive - strafe) - turn);
+        frontR.setPower(drive + (strafe - turn));
     }
     public void arm_position(){
         arm.setTargetPosition(arm_position);
