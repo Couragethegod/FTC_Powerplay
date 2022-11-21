@@ -23,7 +23,6 @@ package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
-import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
@@ -31,17 +30,16 @@ import org.openftc.apriltag.AprilTagDetection;
 import org.openftc.easyopencv.OpenCvCamera;
 import org.openftc.easyopencv.OpenCvCameraFactory;
 import org.openftc.easyopencv.OpenCvCameraRotation;
-import org.openftc.easyopencv.OpenCvInternalCamera;
 
 import java.util.ArrayList;
 
 @Autonomous
-public class AprilTagAutonomousInitDetectionExample extends LinearOpMode
+public class AprilTag extends LinearOpMode
 {
 
     private LinearOpMode myOpMode = null;   // gain access to methods in the calling OpMode.
     // Define a constructor that allows the OpMode to pass a reference to itself.
-    public AprilTagAutonomousInitDetectionExample(LinearOpMode opmode) {myOpMode = opmode;}
+    public AprilTag(LinearOpMode opmode) {myOpMode = opmode;}
     OpenCvCamera camera;
     AprilTagDetectionPipeline aprilTagDetectionPipeline;
 

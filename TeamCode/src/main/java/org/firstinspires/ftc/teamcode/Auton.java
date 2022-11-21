@@ -11,8 +11,8 @@ import org.firstinspires.ftc.robotcontroller.external.samples.RobotHardware;
 public class Auton extends LinearOpMode {
     // Create a RobotHardware object to be used to access robot hardware.
     // Prefix any hardware functions with "robot." to access this class.
-    org.firstinspires.ftc.teamcode.AprilTagAutonomousInitDetectionExample apriltag = new AprilTagAutonomousInitDetectionExample(this);
     org.firstinspires.ftc.teamcode.Hardware hardware = new Hardware(this);
+    org.firstinspires.ftc.teamcode.AprilTag apriltag = new AprilTag(this);
     org.firstinspires.ftc.teamcode.FieldNav fieldnav = new FieldNav(this);
     @Override
     public void runOpMode() {
