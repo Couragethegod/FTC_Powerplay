@@ -2,9 +2,6 @@ package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
-import com.qualcomm.robotcore.util.Range;
-
-import org.firstinspires.ftc.robotcontroller.external.samples.RobotHardware;
 
 @TeleOp(name="Concept: Hardware Class", group="hardware")
 public class Teleop extends LinearOpMode {
@@ -14,10 +11,6 @@ public class Teleop extends LinearOpMode {
 
     @Override
     public void runOpMode() {
-        double turn         = 0;
-        double arm          = 0;
-        double handOffset   = 0;
-
         // initialize all the hardware, using the hardware class. See how clean and simple this is?
         hardware.init();
 
