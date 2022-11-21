@@ -3,14 +3,13 @@ package org.firstinspires.ftc.teamcode;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
-
 @Autonomous(name="Concept: Hardware Class", group="Robot")
-public class Auton extends LinearOpMode {
+public class RedL extends LinearOpMode {
     // Create a RobotHardware object to be used to access robot hardware.
     // Prefix any hardware functions with "robot." to access this class.
-    org.firstinspires.ftc.teamcode.Hardware hardware = new Hardware(this);
-    org.firstinspires.ftc.teamcode.AprilTag apriltag = new AprilTag(this);
-    org.firstinspires.ftc.teamcode.FieldNav fieldnav = new FieldNav(this);
+    Hardware hardware = new Hardware(this);
+    AprilTag apriltag = new AprilTag(this);
+    FieldNav fieldnav = new FieldNav(this);
     @Override
     public void runOpMode() {
         // initialize all the hardware, using the hardware class. See how clean and simple this is?

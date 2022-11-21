@@ -282,13 +282,13 @@ public class FieldNav extends LinearOpMode {
         aTarget.setLocation(OpenGLMatrix.translation(dx, dy, dz)
                 .multiplied(Orientation.getRotationMatrix(EXTRINSIC, XYZ, DEGREES, rx, ry, rz)));
         if (targetIndex == 0) {
-            int image = 0;
+            image = 0;
         } else if (targetIndex == 1) {
-            int image = 1;
+            image = 1;
         } else if (targetIndex == 2) {
-            int image = 2;
+            image = 2;
         } else if (targetIndex == 3) {
-            int image = 3;
+            image = 3;
         }
     }
 }
