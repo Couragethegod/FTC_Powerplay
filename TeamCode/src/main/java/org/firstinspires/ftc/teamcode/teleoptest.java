@@ -96,4 +96,21 @@ public class teleoptest extends OpMode {
             arm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         }
     }
+    public void claw(){
+        if (gamepad1.right_bumper){
+        speedL.setPower(.2);
+        speedR.setPower(.2);
+        }
+        else if (gamepad1.left_bumper){
+            speedL.setPower(.2);
+            speedR.setPower(.2);
+        }
+        if (gamepad1.a){
+            torqueL.setPosition(.2);
+            torqueR.setPosition(.2);
+        } else if (gamepad1.b){
+            torqueL.setPosition(0);
+            torqueR.setPosition(0);
+        }
+    }
 }
