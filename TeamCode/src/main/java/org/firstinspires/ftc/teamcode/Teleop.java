@@ -19,7 +19,8 @@ public class Teleop extends LinearOpMode {
 
         // run until the end of the match (driver presses STOP)
         while (opModeIsActive()) {
-            hardware.movement();
+            hardware.resetencoders();
+            Hardware.movement();
             hardware.arm_position();
             hardware.claw_pos();
             move();
@@ -35,7 +36,7 @@ public class Teleop extends LinearOpMode {
         } else if (gamepad1.dpad_down){
             hardware.arm_position = -500;
         } else if (gamepad1.dpad_right){
-            hardware.arm_position = -0;
+            hardware.arm_position = -20;
         }
     }
     public void claw(){

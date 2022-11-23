@@ -11,24 +11,24 @@ public class Hardware {
     private LinearOpMode myOpMode = null;   // gain access to methods in the calling OpMode.
 
     //Create Motors
-    private DcMotor backL = null;
-    private DcMotor backR = null;
-    private DcMotor frontL = null;
-    private DcMotor frontR = null;
-    private DcMotor arm = null;
+    private static DcMotor backL = null;
+    private static DcMotor backR = null;
+    private static DcMotor frontL = null;
+    private static DcMotor frontR = null;
+    private static DcMotor arm = null;
 
     //Create Servos
     private Servo claw = null;
-    private Servo rtorque = null;
-    private Servo ltorque = null;
-    private CRServo rspeed = null;
-    private CRServo lspeed = null;
+    private Servo torqueR = null;
+    private Servo torqueL = null;
+    private CRServo speedR = null;
+    private CRServo speedL = null;
 
 
     //Variables
     HardwareMap hardwareMap = null;
-    double drive;
-    double turn;
+    static double drive;
+    static double turn;
     double strafe;
 
     double BLpower;
@@ -62,10 +62,10 @@ public class Hardware {
 
         //connect servos
         claw = hardwareMap.get(Servo.class, "claw");
-        rtorque = hardwareMap.get(Servo.class, "R torque");
-        ltorque = hardwareMap.get(Servo.class, "L torque");
-        rspeed = hardwareMap.get(CRServo.class, "R speed");
-        lspeed = hardwareMap.get(CRServo.class, "L speed");
+        torqueR = hardwareMap.get(Servo.class, "R torque");
+        torqueL = hardwareMap.get(Servo.class, "L torque");
+        speedR = hardwareMap.get(CRServo.class, "R speed");
+        speedL = hardwareMap.get(CRServo.class, "L speed");
 
         //set directions
         backL.setDirection(DcMotorSimple.Direction.REVERSE);
@@ -75,11 +75,7 @@ public class Hardware {
         arm.setDirection(DcMotorSimple.Direction.FORWARD);
 
         //set Motor Modes
-        backL.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        backR.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        frontL.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        frontR.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        arm.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+
 
         backL.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         backR.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
@@ -94,8 +90,8 @@ public class Hardware {
         frontR.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         arm.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
-        rtorque.scaleRange(0.2, 0.8);
-        ltorque.scaleRange(0.2, 0.8);
+        torqueR.scaleRange(0.2, 0.8);
+        torqueL.scaleRange(0.2, 0.8);
 
         //set Motors to 0 power
         backL.setPower(0);
@@ -105,11 +101,11 @@ public class Hardware {
         arm.setPower(0);
     }
 
-    public void movement() {
-        backL.setPower(drive - turn);
-        backR.setPower((-1 * drive) - turn);
-        frontL.setPower(drive - turn);
-        frontR.setPower((-1 * drive) - turn);
+    public static void movement() {
+        backL.setPower((drive - turn) / 2);
+        backR.setPower(((-1 * drive) - turn) / 2);
+        frontL.setPower((drive - turn) / 2);
+        frontR.setPower(((-1 * drive) - turn) / 2);
     }
 
     public void arm_position() {
@@ -133,5 +129,12 @@ public class Hardware {
         backR.setPower(0);
         frontL.setPower(0);
         frontR.setPower(0);
+    }
+    public void resetencoders(){
+        backL.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        backR.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        frontL.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        frontR.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        arm.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
     }
 }
