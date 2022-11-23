@@ -3,14 +3,14 @@ package org.firstinspires.ftc.teamcode;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
-@TeleOp(name="Concept: Hardware Class", group="hardware")
+@TeleOp(name="Concept: Teleop Class", group="hardware")
 public class Teleop extends LinearOpMode {
     // Create a hardwareHardware object to be used to access hardware hardware.
     // Prefix any hardware functions with "hardware." to access this class.
     org.firstinspires.ftc.teamcode.Hardware hardware = new org.firstinspires.ftc.teamcode.Hardware(this);
 
     @Override
-    public void runOpMode() {
+    public void runOpMode() throws InterruptedException{
         // initialize all the hardware, using the hardware class. See how clean and simple this is?
         hardware.init();
 
