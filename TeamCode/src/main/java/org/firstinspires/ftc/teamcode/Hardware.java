@@ -30,6 +30,8 @@ public class Hardware {
     static double drive;
     static double turn;
     double strafe;
+    double speed;
+    double torque;
 
     double BLpower;
     double BRpower;
@@ -115,8 +117,10 @@ public class Hardware {
     }
 
     public void claw_pos() {
-        claw.setPosition(claw_pos);
-        //
+        speedL.setPower(speed);
+        speedR.setPower(speed);
+        torqueL.setPosition(torque);
+        torqueR.setPosition(torque);
     }
     public void autonmovement(){
         backL.setPower(BLpower);

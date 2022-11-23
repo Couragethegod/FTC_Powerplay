@@ -66,12 +66,10 @@ public class teleoptest extends OpMode {
         drive = gamepad1.left_stick_y;
         turn = gamepad1.left_stick_x;
 
-
         backL.setPower((drive - turn) / 2);
         backR.setPower(((-1 * drive) - turn) / 2);
         frontL.setPower((drive - turn) / 2);
         frontR.setPower(((-1 * drive) - turn) / 2);
-
     }
 
     public void arm() {
