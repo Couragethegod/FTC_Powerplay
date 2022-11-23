@@ -24,29 +24,21 @@ public class Teleop extends LinearOpMode {
             hardware.claw_pos();
             move();
             move_arm();
-            move_claw();
+            //claw();
         }
     }
     public void move_arm(){
         if (gamepad1.dpad_up){
-            hardware.arm_position = 800;
+            hardware.arm_position = -170;
         } else if (gamepad1.dpad_left){
-            hardware.arm_position = 600;
+            hardware.arm_position = -1075;
         } else if (gamepad1.dpad_down){
-            hardware.arm_position = 400;
+            hardware.arm_position = -500;
         } else if (gamepad1.dpad_right){
-            hardware.arm_position = 200;
-        } else if ((gamepad1.left_bumper) && gamepad1.dpad_up){
-            hardware.arm_position = 100;
-        } else if ((gamepad1.left_bumper) && gamepad1.dpad_left){
-            hardware.arm_position = 80;
-        } else if ((gamepad1.left_bumper) && gamepad1.dpad_down){
-            hardware.arm_position = 60;
-        } else if ((gamepad1.left_bumper) && gamepad1.dpad_right){
-            hardware.arm_position = 20;
+            hardware.arm_position = -0;
         }
     }
-    public void move_claw(){
+    public void claw(){
         if (gamepad1.a){
             hardware.claw_pos = 0;
         } else if (gamepad1.b){
@@ -55,7 +47,6 @@ public class Teleop extends LinearOpMode {
     }
     public void move(){
         hardware.drive = gamepad1.left_stick_y;
-        hardware.strafe = gamepad1.left_stick_x;
-        hardware.turn = gamepad1.right_stick_x;
+        hardware.turn = gamepad1.left_stick_x;
     }
 }

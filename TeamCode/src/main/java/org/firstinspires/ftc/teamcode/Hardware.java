@@ -19,7 +19,11 @@ public class Hardware {
 
     //Create Servos
     private Servo claw = null;
-    private CRServo cr = null;
+    private Servo rtorque = null;
+    private Servo ltorque = null;
+    private CRServo rspeed = null;
+    private CRServo lspeed = null;
+
 
     //Variables
     HardwareMap hardwareMap = null;
@@ -58,7 +62,10 @@ public class Hardware {
 
         //connect servos
         claw = hardwareMap.get(Servo.class, "claw");
-        cr = hardwareMap.get(CRServo.class, "crservo");
+        rtorque = hardwareMap.get(Servo.class, "R torque");
+        ltorque = hardwareMap.get(Servo.class, "L torque");
+        rspeed = hardwareMap.get(CRServo.class, "R speed");
+        lspeed = hardwareMap.get(CRServo.class, "L speed");
 
         //set directions
         backL.setDirection(DcMotorSimple.Direction.REVERSE);
@@ -87,6 +94,9 @@ public class Hardware {
         frontR.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         arm.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
+        rtorque.scaleRange(0.2, 0.8);
+        ltorque.scaleRange(0.2, 0.8);
+
         //set Motors to 0 power
         backL.setPower(0);
         backR.setPower(0);
@@ -96,10 +106,10 @@ public class Hardware {
     }
 
     public void movement() {
-        backL.setPower(drive + (strafe + turn));
-        backR.setPower((drive - strafe) + turn);
-        frontL.setPower((drive - strafe) - turn);
-        frontR.setPower(drive + (strafe - turn));
+        backL.setPower(drive - turn);
+        backR.setPower((-1 * drive) - turn);
+        frontL.setPower(drive - turn);
+        frontR.setPower((-1 * drive) - turn);
     }
 
     public void arm_position() {
