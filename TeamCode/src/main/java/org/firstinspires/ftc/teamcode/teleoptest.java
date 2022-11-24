@@ -13,7 +13,8 @@ public class teleoptest extends OpMode {
     DcMotor backR;
     DcMotor frontL;
     DcMotor frontR;
-    DcMotor arm;
+    DcMotor arm1;
+    DcMotor arm2;
 
     Servo torqueR;
     Servo torqueL;
@@ -28,7 +29,8 @@ public class teleoptest extends OpMode {
         frontL = hardwareMap.get(DcMotor.class, "frontL");
         backR = hardwareMap.get(DcMotor.class, "backR");
         backL = hardwareMap.get(DcMotor.class, "backL");
-        arm = hardwareMap.get(DcMotor.class, "Arm");
+        arm1 = hardwareMap.get(DcMotor.class, "Arm1");
+        arm2 = hardwareMap.get(DcMotor.class, "Arm2");
 
         torqueR = hardwareMap.get(Servo.class, "R torque");
         torqueL = hardwareMap.get(Servo.class, "L torque");
@@ -38,7 +40,8 @@ public class teleoptest extends OpMode {
         frontL.setDirection(DcMotorSimple.Direction.REVERSE);
         backL.setDirection(DcMotorSimple.Direction.REVERSE);
 
-        arm.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        arm1.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        arm2.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
         torqueR.scaleRange(0.2, 0.8);
         torqueL.scaleRange(0.2, 0.8);
@@ -52,9 +55,10 @@ public class teleoptest extends OpMode {
 
     @Override
     public void loop() {
-        arm.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        arm1.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         move();
         arm();
+        claw();
 
     }
 
@@ -74,41 +78,44 @@ public class teleoptest extends OpMode {
 
     public void arm() {
         if (gamepad1.dpad_up) {
-            arm.setTargetPosition(-1775);
-            arm.setPower(.5);
-            arm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+            arm1.setTargetPosition(-1775);
+            arm1.setPower(.5);
+            arm1.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         }
         if (gamepad1.dpad_left) {
-            arm.setTargetPosition(-1000);
-            arm.setPower(.5);
-            arm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+            arm1.setTargetPosition(-1000);
+            arm1.setPower(.5);
+            arm1.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         }
         if (gamepad1.dpad_down) {
-            arm.setTargetPosition(-500);
-            arm.setPower(.5);
-            arm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+            arm1.setTargetPosition(-500);
+            arm1.setPower(.5);
+            arm1.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         }
         if (gamepad1.dpad_right) {
-            arm.setTargetPosition(-20);
-            arm.setPower(.5);
-            arm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+            arm1.setTargetPosition(-20);
+            arm1.setPower(.5);
+            arm1.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         }
     }
     public void claw(){
         if (gamepad1.right_bumper){
-        speedL.setPower(.2);
-        speedR.setPower(.2);
+        torqueL.setPosition(0.05);
+        torqueR.setPosition(0);
         }
         else if (gamepad1.left_bumper){
-            speedL.setPower(.2);
-            speedR.setPower(.2);
+            torqueL.setPosition(0);
+            torqueR.setPosition(0.05);
         }
         if (gamepad1.a){
-            torqueL.setPosition(.2);
-            torqueR.setPosition(.2);
+            speedL.setPower(0);
+            speedR.setPower(0);
         } else if (gamepad1.b){
-            torqueL.setPosition(0);
-            torqueR.setPosition(0);
+            speedL.setPower(1);
+            speedR.setPower(-1);
+        } else if (gamepad1.x){
+            speedL.setPower(-1);
+            speedR.setPower(1);
         }
     }
 }
