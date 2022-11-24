@@ -29,16 +29,16 @@ public class teleoptest extends OpMode {
         frontL = hardwareMap.get(DcMotor.class, "frontL");
         backR = hardwareMap.get(DcMotor.class, "backR");
         backL = hardwareMap.get(DcMotor.class, "backL");
-        arm1 = hardwareMap.get(DcMotor.class, "Arm1");
-        arm2 = hardwareMap.get(DcMotor.class, "Arm2");
+        arm1 = hardwareMap.get(DcMotor.class, "arm1");
+        arm2 = hardwareMap.get(DcMotor.class, "arm2");
 
         torqueR = hardwareMap.get(Servo.class, "R torque");
         torqueL = hardwareMap.get(Servo.class, "L torque");
         speedR = hardwareMap.get(CRServo.class, "R speed");
         speedL = hardwareMap.get(CRServo.class, "L speed");
 
-        frontL.setDirection(DcMotorSimple.Direction.REVERSE);
-        backL.setDirection(DcMotorSimple.Direction.REVERSE);
+        //frontL.setDirection(DcMotorSimple.Direction.REVERSE);
+        //backL.setDirection(DcMotorSimple.Direction.REVERSE);
 
         arm1.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         arm2.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
@@ -56,6 +56,7 @@ public class teleoptest extends OpMode {
     @Override
     public void loop() {
         arm1.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        arm2.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         move();
         arm();
         claw();
@@ -71,31 +72,44 @@ public class teleoptest extends OpMode {
         turn = gamepad1.left_stick_x;
 
         backL.setPower((drive - turn) / 2);
-        backR.setPower(((-1 * drive) - turn) / 2);
         frontL.setPower((drive - turn) / 2);
-        frontR.setPower(((-1 * drive) - turn) / 2);
+        backR.setPower(-((drive + turn) / 2));
+        backL.setPower(-((drive + turn) / 2));
     }
 
     public void arm() {
         if (gamepad1.dpad_up) {
-            arm1.setTargetPosition(-1775);
+            arm1.setTargetPosition(-1075);
             arm1.setPower(.5);
             arm1.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+            arm2.setTargetPosition(-1075);
+            arm2.setPower(.5);
+            arm2.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         }
-        if (gamepad1.dpad_left) {
-            arm1.setTargetPosition(-1000);
+        else if (gamepad1.dpad_left) {
+            arm1.setTargetPosition(-700);
             arm1.setPower(.5);
             arm1.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+            arm2.setTargetPosition(-700);
+            arm2.setPower(.5);
+            arm2.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+
         }
-        if (gamepad1.dpad_down) {
+        else if (gamepad1.dpad_down) {
             arm1.setTargetPosition(-500);
             arm1.setPower(.5);
             arm1.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+            arm2.setTargetPosition(-500);
+            arm2.setPower(.5);
+            arm2.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         }
-        if (gamepad1.dpad_right) {
-            arm1.setTargetPosition(-20);
+        else if (gamepad1.dpad_right) {
+            arm1.setTargetPosition(-40);
             arm1.setPower(.5);
             arm1.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+            arm2.setTargetPosition(-40);
+            arm2.setPower(.5);
+            arm2.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         }
     }
     public void claw(){
