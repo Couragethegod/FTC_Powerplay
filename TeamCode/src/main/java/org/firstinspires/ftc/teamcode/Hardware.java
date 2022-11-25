@@ -15,7 +15,8 @@ public class Hardware {
     private static DcMotor backR = null;
     private static DcMotor frontL = null;
     private static DcMotor frontR = null;
-    private static DcMotor arm = null;
+    private static DcMotor arm1 = null;
+    private        DcMotor arm2 = null;
 
     //Create Servos
     private Servo claw = null;
@@ -30,8 +31,10 @@ public class Hardware {
     static double drive;
     static double turn;
     double strafe;
-    double speed;
-    double torque;
+    double speedr;
+    double speedl;
+    double torquel;
+    double torquer;
 
     double BLpower;
     double BRpower;
@@ -39,7 +42,7 @@ public class Hardware {
     double FRpower;
 
     int arm_position;
-    int claw_pos;
+
 
     // Define a constructor that allows the OpMode to pass a reference to itself.
     public Hardware(LinearOpMode opmode) {
@@ -60,10 +63,11 @@ public class Hardware {
         backR = hardwareMap.get(DcMotor.class, "backR");
         frontL = hardwareMap.get(DcMotor.class, "frontL");
         frontR = hardwareMap.get(DcMotor.class, "frontR");
-        arm = hardwareMap.get(DcMotor.class, "arm");
+        arm1 = hardwareMap.get(DcMotor.class, "arm1");
+        arm2 = hardwareMap.get(DcMotor.class, "arm2");
+
 
         //connect servos
-        claw = hardwareMap.get(Servo.class, "claw");
         torqueR = hardwareMap.get(Servo.class, "R torque");
         torqueL = hardwareMap.get(Servo.class, "L torque");
         speedR = hardwareMap.get(CRServo.class, "R speed");
@@ -74,7 +78,8 @@ public class Hardware {
         backR.setDirection(DcMotorSimple.Direction.FORWARD);
         frontL.setDirection(DcMotorSimple.Direction.REVERSE);
         frontR.setDirection(DcMotorSimple.Direction.FORWARD);
-        arm.setDirection(DcMotorSimple.Direction.FORWARD);
+        arm1.setDirection(DcMotorSimple.Direction.FORWARD);
+        arm2.setDirection(DcMotorSimple.Direction.FORWARD);
 
         //set Motor Modes
 
@@ -83,14 +88,16 @@ public class Hardware {
         backR.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         frontL.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         frontR.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        arm.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        arm1.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        arm2.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
         //set ZERO POWER BEHAVIOR
         backL.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         backR.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         frontL.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         frontR.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        arm.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        arm1.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        arm2.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
         torqueR.scaleRange(0.2, 0.8);
         torqueL.scaleRange(0.2, 0.8);
@@ -100,7 +107,7 @@ public class Hardware {
         backR.setPower(0);
         frontL.setPower(0);
         frontR.setPower(0);
-        arm.setPower(0);
+        arm1.setPower(0);
     }
 
     public static void movement() {
@@ -111,16 +118,19 @@ public class Hardware {
     }
 
     public void arm_position() {
-        arm.setTargetPosition(arm_position);
-        arm.setPower(.5);
-        arm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        arm1.setTargetPosition(arm_position);
+        arm1.setPower(.5);
+        arm1.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        arm2.setTargetPosition(arm_position);
+        arm2.setPower(.5);
+        arm2.setMode(DcMotor.RunMode.RUN_TO_POSITION);
     }
 
     public void claw_pos() {
-        speedL.setPower(speed);
-        speedR.setPower(speed);
-        torqueL.setPosition(torque);
-        torqueR.setPosition(torque);
+        speedL.setPower(speedl);
+        speedR.setPower(speedr);
+        torqueL.setPosition(torquel);
+        torqueR.setPosition(torquer);
     }
     public void autonmovement(){
         backL.setPower(BLpower);
@@ -139,6 +149,7 @@ public class Hardware {
         backR.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         frontL.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         frontR.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        arm.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        arm1.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        arm2.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
     }
 }

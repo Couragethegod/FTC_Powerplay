@@ -71,44 +71,44 @@ public class teleoptest extends OpMode {
         drive = gamepad1.left_stick_y;
         turn = gamepad1.left_stick_x;
 
-        backL.setPower((drive - turn) / 2);
-        frontL.setPower((drive - turn) / 2);
-        backR.setPower(-((drive + turn) / 2));
-        backL.setPower(-((drive + turn) / 2));
+        backL.setPower((drive - turn) );
+        frontL.setPower((drive - turn) );
+        backR.setPower(-((drive + turn) ));
+        backL.setPower(-((drive + turn) ));
     }
 
     public void arm() {
         if (gamepad1.dpad_up) {
             arm1.setTargetPosition(-1075);
-            arm1.setPower(.5);
+            arm1.setPower(1);
             arm1.setMode(DcMotor.RunMode.RUN_TO_POSITION);
             arm2.setTargetPosition(-1075);
-            arm2.setPower(.5);
+            arm2.setPower(1);
             arm2.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         }
         else if (gamepad1.dpad_left) {
             arm1.setTargetPosition(-700);
-            arm1.setPower(.5);
+            arm1.setPower(1);
             arm1.setMode(DcMotor.RunMode.RUN_TO_POSITION);
             arm2.setTargetPosition(-700);
-            arm2.setPower(.5);
+            arm2.setPower(1);
             arm2.setMode(DcMotor.RunMode.RUN_TO_POSITION);
 
         }
         else if (gamepad1.dpad_down) {
-            arm1.setTargetPosition(-500);
+            arm1.setTargetPosition(-420);
             arm1.setPower(.5);
             arm1.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-            arm2.setTargetPosition(-500);
+            arm2.setTargetPosition(-420);
             arm2.setPower(.5);
             arm2.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         }
         else if (gamepad1.dpad_right) {
             arm1.setTargetPosition(-40);
-            arm1.setPower(.5);
+            arm1.setPower(1);
             arm1.setMode(DcMotor.RunMode.RUN_TO_POSITION);
             arm2.setTargetPosition(-40);
-            arm2.setPower(.5);
+            arm2.setPower(1);
             arm2.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         }
     }

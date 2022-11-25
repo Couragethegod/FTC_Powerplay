@@ -2,15 +2,19 @@ package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+import com.qualcomm.robotcore.hardware.DcMotor;
+
 
 @TeleOp(name="Concept: Teleop Class", group="hardware")
 public class Teleop extends LinearOpMode {
+    Hardware hardware;
     // Create a hardwareHardware object to be used to access hardware hardware.
     // Prefix any hardware functions with "hardware." to access this class.
-    org.firstinspires.ftc.teamcode.Hardware hardware = new org.firstinspires.ftc.teamcode.Hardware(this);
+    //org.firstinspires.ftc.teamcode.Hardware hardware = new org.firstinspires.ftc.teamcode.Hardware(this);
 
     @Override
     public void runOpMode() throws InterruptedException{
+
         // initialize all the hardware, using the hardware class. See how clean and simple this is?
         hardware.init();
 
@@ -29,14 +33,18 @@ public class Teleop extends LinearOpMode {
         }
     }
     public void move_arm(){
-        if (gamepad1.dpad_up){
-            hardware.arm_position = -170;
-        } else if (gamepad1.dpad_left){
+        if (gamepad1.dpad_up) {
             hardware.arm_position = -1075;
-        } else if (gamepad1.dpad_down){
-            hardware.arm_position = -500;
-        } else if (gamepad1.dpad_right){
-            hardware.arm_position = -20;
+        }
+        else if (gamepad1.dpad_left) {
+            hardware.arm_position = -700;
+
+        }
+        else if (gamepad1.dpad_down) {
+            hardware.arm_position = -420;
+        }
+        else if (gamepad1.dpad_right) {
+            hardware.arm_position = -40;
         }
     }
 
@@ -47,15 +55,21 @@ public class Teleop extends LinearOpMode {
     }
     public void claw(){
         if (gamepad1.right_bumper){
-            hardware.speed = .2;
-        }
-        else if (gamepad1.left_bumper){
-        hardware.speed = 0;
+            hardware.torquel = .05;
+            hardware.torquer = 0;
+        } else if (gamepad1.left_bumper){
+            hardware.torquel = 0;
+            hardware.torquer = .05;
         }
         if (gamepad1.a){
-            hardware.torque = .2;
+            hardware.speedl = 0;
+            hardware.speedr = 0;
         } else if (gamepad1.b){
-            hardware.torque = 0;
+            hardware.speedl = 1;
+            hardware.speedr = -1;
+        } else if (gamepad1.x){
+            hardware.speedl = -1;
+            hardware.speedr = 1;
         }
     }
 }
