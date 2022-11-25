@@ -21,8 +21,6 @@ public class teleoptest extends OpMode {
     CRServo speedR;
     CRServo speedL;
 
-
-
     @Override
     public void init() {
         frontR = hardwareMap.get(DcMotor.class, "frontR");
@@ -49,8 +47,6 @@ public class teleoptest extends OpMode {
 
     @Override
     public void init_loop() {
-
-
     }
 
     @Override
@@ -60,9 +56,7 @@ public class teleoptest extends OpMode {
         move();
         arm();
         claw();
-
     }
-
 
     public void move() {
         double drive;
@@ -93,7 +87,6 @@ public class teleoptest extends OpMode {
             arm2.setTargetPosition(-700);
             arm2.setPower(1);
             arm2.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-
         }
         else if (gamepad1.dpad_down) {
             arm1.setTargetPosition(-420);
